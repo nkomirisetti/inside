@@ -35,7 +35,7 @@ var populateMessage = function () {
         message = isGirl(message);
         messageBox = createMessage("G", message);
     } else if (isBranch(message)) {
-        if (chapterIndex === 11 || chapterIndex === 12 || chapterIndex===13){
+        if (chapterIndex === 11 || chapterIndex === 12 || chapterIndex === 13) {
             return;
         } else {
             beginBranch();
@@ -43,8 +43,7 @@ var populateMessage = function () {
         return;
     } else if (isEnd(message)) {
         return;
-    }
-    else {
+    } else {
         message = isConsole(message);
         messageBox = createMessage("Console", message);
     }
@@ -76,7 +75,7 @@ var beginBranch = function () {
     var buttonOptionA = $("#optionA");
     var buttonOptionB = $("#optionB");
     var buttonContainer = $("#buttonContainer");
-    if (chapterIndex < 12){
+    if (chapterIndex < 12) {
         buttonContainer.slideDown(1000);
     }
     if (storyJSON[chapterIndex].links.length === 1) {
@@ -87,7 +86,7 @@ var beginBranch = function () {
     var optionA = storyJSON[chapterIndex].links[0];
     var optionB = storyJSON[chapterIndex].links[1];
     console.log(optionA.name);
-    if (optionA.name==="good ending"){
+    if (optionA.name === "good ending") {
         ending()
         return;
     }
@@ -126,8 +125,8 @@ function branchSelected(event) {
     $("#buttonContainer").slideUp(1000);
 };
 
-function ending(){
-    if (goodScore>badScore){
+function ending() {
+    if (goodScore > badScore) {
         lineIndex = 0;
         chapterIndex = 12;
     } else {

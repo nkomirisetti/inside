@@ -1,9 +1,7 @@
-
-
-var createMessage = function(speaker, message) {
+var createMessage = function (speaker, message) {
     var messageLabel;
-    if (speaker === "AI"){
-        messageLabel =  $('<div class="message CPUmsg"></div>');
+    if (speaker === "AI") {
+        messageLabel = $('<div class="message CPUmsg"></div>');
     } else if (speaker === "G") {
         messageLabel = $('<div class="message USERmsg"></div>');
     } else {

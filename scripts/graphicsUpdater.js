@@ -3,45 +3,43 @@ function moveTo(target) {
     $("#girl").css("left", target.css("left"))
 }
 
-function goTo(x,y) {
+function goTo(x, y) {
     $("#girl").css("top", y);
     $("#girl").css("left", x)
 }
 
-var updateChapterGraphics = function(){
-    if (chapterIndex === 1){
+var updateChapterGraphics = function () {
+    if (chapterIndex === 1) {
         goTo(520, 367);
     }
-    if (chapterIndex === 2){
+    if (chapterIndex === 2) {
         moveTo($("#bedroom"));
     }
-    if (chapterIndex === 3){
+    if (chapterIndex === 3) {
         moveTo($("#taskA"));
     }
-    if (chapterIndex === 4){
+    if (chapterIndex === 4) {
         moveTo($("#fridge"));
     }
-    if (chapterIndex === 5){
+    if (chapterIndex === 5) {
         moveTo($("#steelWall"));
     }
-    if (chapterIndex === 6){
+    if (chapterIndex === 6) {
         moveTo($("#alcove"));
     }
-    if (chapterIndex === 7){
+    if (chapterIndex === 7) {
         moveTo($("#doors"));
     }
-    if (chapterIndex === 8){
+    if (chapterIndex === 8) {
         moveTo($("#taskB"))
     }
-    if (chapterIndex === 9){
+    if (chapterIndex === 9) {
         moveTo($("#taskC"));
     }
-    if (chapterIndex === 10){
+    if (chapterIndex === 10) {
         moveTo($("#exit"));
     }
-    if (chapterIndex === 11){
+    if (chapterIndex === 11) {
         moveTo($("#bedroom"));
     }
 }
-
-

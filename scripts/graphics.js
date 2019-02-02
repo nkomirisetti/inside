@@ -1,5 +1,5 @@
 function audioAnimate() {
-    var x = Math.round(Math.random()*22);
+    var x = Math.round(Math.random() * 22);
     var y = "[";
     for (i = 0; i < x; i++) {
         y = y + "|";
@@ -13,4 +13,3 @@ function audioAnimate() {
 }
 
 setInterval(audioAnimate, 50);
-

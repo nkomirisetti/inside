@@ -19,8 +19,8 @@ var getNextMessage = function () {
 }
 
 var isEnd = function (text) {
-    if (text.match("END")){
-        if (goodScore> badScore){
+    if (text.match("END")) {
+        if (goodScore > badScore) {
             fadeToWhite();
         } else {
             fadeToDark();
@@ -64,7 +64,7 @@ var isGoodOrBad = function (text) {
 
 }
 
-var fadeToDark = function() {
+var fadeToDark = function () {
     $("#fullScreen").fadeOut(0);
     $("#fullScreen").append("<h1 class='white'>END</h1>");
     $("#fullScreen").append("<h2 class='white'>A game by Sophia Shaikh, Nikhil Komirisetti, and Tom Nguyen.</h2>")
@@ -79,5 +79,5 @@ var fadeToWhite = function () {
     $("#fullScreen").append("<h1 class='black'>END</h1>");
     $("#fullScreen").append("<h2 class='black'>A game by Sophia Shaikh, Nikhil Komirisetti, and Tom Nguyen.</h2>")
     $("#fullScreen").css("background", "white");
-    $("#fullScreen").fadeIn(1000);   
+    $("#fullScreen").fadeIn(1000);
 }
