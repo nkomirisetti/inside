@@ -1,5 +1,5 @@
 var chatContainer;
-var IS_DEBUG = false;
+var IS_DEBUG = true;
 
 var apiLoad;
 var animation;
@@ -23,7 +23,6 @@ $(document).ready(() => {
     loadStory();
 })
 
-
 var populateMessage = function () {
     updateChapterGraphics();
     var message = getNextMessage();
@@ -36,10 +35,11 @@ var populateMessage = function () {
         message = isGirl(message);
         messageBox = createMessage("G", message);
     } else if (isBranch(message)) {
-        if (chapterIndex === 12 || chapterIndex===13){
+        if (chapterIndex === 11 || chapterIndex === 12 || chapterIndex===13){
             return;
+        } else {
+            beginBranch();
         }
-        beginBranch();
         return;
     } else if (isEnd(message)) {
         return;
@@ -62,7 +62,6 @@ var populateMessage = function () {
         } else {
             timeout = 1500 + message.length * 50
         }
-        console.log(message);
 
         setTimeout(function () {
             populateMessage(true)
@@ -77,11 +76,11 @@ var beginBranch = function () {
     var buttonOptionA = $("#optionA");
     var buttonOptionB = $("#optionB");
     var buttonContainer = $("#buttonContainer");
-
-    buttonContainer.slideDown(1000);
-
+    if (chapterIndex < 12){
+        buttonContainer.slideDown(1000);
+    }
     if (storyJSON[chapterIndex].links.length === 1) {
-        finalBranch(storyJSON[0].links[0].pid);
+        finalBranch();
         return;
     }
 
@@ -109,6 +108,7 @@ var beginBranch = function () {
 };
 
 function branchSelected(event) {
+    console.log(event);
     var PID = event.data.param1;
     var i;
     for (i = 0; i < storyJSON.length; i++) {
