@@ -1,5 +1,5 @@
 var chatContainer;
-var IS_DEBUG = true;
+var IS_DEBUG = false;
 
 var apiLoad;
 var animation;
