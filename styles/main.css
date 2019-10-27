@@ -111,7 +111,17 @@ body {
     top: 50%;
     left: 50%;
     margin: -360px;
+    animation: 3s ease-out 0s loadMap;
     transform: rotateX(45deg) rotateZ(45deg);
+}
+
+@keyframes loadMap {
+    0% {
+        transform: rotateX(0deg) rotateZ(0deg);
+    }
+    100% {
+        transform: rotateX(45deg) rotateZ(45deg);
+    }
 }
 
 #girl {
