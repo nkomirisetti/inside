@@ -34,12 +34,8 @@ var populateMessage = function () {
     } else if (isGirl(message)) {
         message = isGirl(message);
         messageBox = createMessage("G", message);
-    } else if (isBranch(message)) {
-        if (chapterIndex === 11 || chapterIndex === 12 || chapterIndex === 13) {
-            return;
-        } else {
-            beginBranch();
-        }
+    } else if (isBranch(message) && chapterIndex < 12) {
+            beginBranch();        
         return;
     } else if (isEnd(message)) {
         return;
@@ -63,7 +59,7 @@ var populateMessage = function () {
         }
 
         setTimeout(function () {
-            populateMessage(true)
+            populateMessage()
         }, timeout);
         $("#chatContainer").scrollTop(9999);
     });
@@ -72,12 +68,6 @@ var populateMessage = function () {
 
 var beginBranch = function () {
 
-    var buttonOptionA = $("#optionA");
-    var buttonOptionB = $("#optionB");
-    var buttonContainer = $("#buttonContainer");
-    if (chapterIndex < 12) {
-        buttonContainer.slideDown(1000);
-    }
     if (storyJSON[chapterIndex].links.length === 1) {
         finalBranch();
         return;
@@ -85,11 +75,15 @@ var beginBranch = function () {
 
     var optionA = storyJSON[chapterIndex].links[0];
     var optionB = storyJSON[chapterIndex].links[1];
-    console.log(optionA.name);
     if (optionA.name === "good ending") {
         ending()
         return;
     }
+
+    var buttonOptionA = $("#optionA");
+    var buttonOptionB = $("#optionB");
+    var buttonContainer = $("#buttonContainer");
+    buttonContainer.slideDown(1000);
 
     buttonOptionA.html(optionA.name);
     buttonOptionB.html(optionB.name);
@@ -107,7 +101,6 @@ var beginBranch = function () {
 };
 
 function branchSelected(event) {
-    console.log(event);
     var PID = event.data.param1;
     var i;
     for (i = 0; i < storyJSON.length; i++) {
@@ -122,7 +115,9 @@ function branchSelected(event) {
     isGoodOrBad(text);
 
     populateMessage();
-    $("#buttonContainer").slideUp(1000);
+    if (chapterIndex < 12){
+        $("#buttonContainer").slideUp(1000);
+    }
 };
 
 function ending() {
