@@ -6,21 +6,31 @@ var animation;
 
 
 $(document).ready(() => {
-    chatContainer = $("#chatContainer");
+    $("#startButton").click(function () {
+        $("#startOverlay").fadeOut(500);
 
-    if (IS_DEBUG) {
-        apiLoad = 5000;
-        animation = 200;
-    } else {
-        apiLoad = 2000;
-        animation = 750;
-    }
+        // Start background music
+        var bgMusic = document.querySelector("audio[src='music/background_music_simple.mp3']");
+        if (bgMusic) {
+            bgMusic.play().catch(e => console.log("Audio play failed:", e));
+        }
 
-    $("#buttonContainer").slideUp(0);
-    setTimeout(function () {
-        populateMessage(true)
-    }, apiLoad);
-    loadStory();
+        chatContainer = $("#chatContainer");
+
+        if (IS_DEBUG) {
+            apiLoad = 5000;
+            animation = 200;
+        } else {
+            apiLoad = 2000;
+            animation = 750;
+        }
+
+        $("#buttonContainer").slideUp(0);
+        setTimeout(function () {
+            populateMessage(true)
+        }, apiLoad);
+        loadStory();
+    });
 })
 
 var populateMessage = function () {
@@ -35,7 +45,7 @@ var populateMessage = function () {
         message = isGirl(message);
         messageBox = createMessage("G", message);
     } else if (isBranch(message) && chapterIndex < 12) {
-            beginBranch();        
+        beginBranch();
         return;
     } else if (isEnd(message)) {
         return;
@@ -115,7 +125,7 @@ function branchSelected(event) {
     isGoodOrBad(text);
 
     populateMessage();
-    if (chapterIndex < 12){
+    if (chapterIndex < 12) {
         $("#buttonContainer").slideUp(1000);
     }
 };

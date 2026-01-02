@@ -1,0 +1,107 @@
+@media screen and (max-width: 768px) {
+    body {
+        overflow: auto;
+        /* Allow scrolling on mobile */
+    }
+
+    #messagesContainer {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+        /* Half screen for chat */
+        border-left: none;
+        border-top: 1px solid #292929;
+        order: 2;
+        /* Show below graphics */
+    }
+
+    #graphicsContainer {
+        position: relative;
+        width: 100%;
+        height: 50vh;
+        /* Half screen for graphics */
+        overflow: hidden;
+        order: 1;
+        /* Show above chat */
+    }
+
+    /* Flex container to stack them */
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #floorPlan {
+        transform: scale(0.5) rotateX(45deg) rotateZ(45deg);
+        top: 50%;
+        left: 50%;
+        margin-left: -360px;
+        /* Center after scaling */
+        margin-top: -360px;
+    }
+
+    #chatContainer {
+        padding-bottom: 100px;
+        /* Increased to account for buttons */
+    }
+
+    #buttonContainer {
+        position: absolute;
+        /* Relative to messagesContainer */
+        bottom: 0;
+        width: 100%;
+    }
+
+    #buttonContainer button {
+        width: calc(50% - 25px);
+        /* Two buttons side by side */
+        display: inline-block;
+        margin: 10px;
+        font-size: 16px;
+    }
+
+    .message {
+        width: 80%;
+        /* Smaller width to allow side alignment */
+        margin-bottom: 20px;
+        /* More padding between messages */
+        padding: 15px;
+        /* More internal padding */
+    }
+
+    .USERmsg {
+        margin-left: auto;
+        /* Align to right */
+        margin-right: 10px;
+        background-color: #e6f7ff;
+        /* Light blue tint for distinct look */
+        border-radius: 15px 15px 0 15px;
+        /* Speech bubble rounded corners */
+        border-left: none;
+        /* Reset desktop style */
+        border: 2px solid #4bb5f3;
+    }
+
+    .CPUmsg {
+        margin-right: auto;
+        /* Align to left */
+        margin-left: 10px;
+        background-color: #fff0f0;
+        /* Light red tint */
+        border-radius: 15px 15px 15px 0;
+        border-right: none;
+        border: 2px solid #f24a4a;
+    }
+
+    .CONSOLEmsg {
+        width: 90%;
+        margin: 20px auto;
+        font-style: italic;
+    }
+
+    #audioGraphic {
+        width: 100%;
+        position: sticky;
+        /* Keep at top of chat section */
+    }
+}
